@@ -1,10 +1,10 @@
-import pickle
+import joblib
 import numpy as np
 
 # Load your trained model
 def load_model():
     with open('C:/Users/Users/Documents/ML Project/models/gradient_boosting_model.pkl', 'rb') as f:
-        model = pickle.load(f)
+        model = joblib.load(f)
     return model
 
 # Make a prediction
