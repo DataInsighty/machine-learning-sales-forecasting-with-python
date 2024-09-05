@@ -1,21 +1,26 @@
-from flask import request, jsonify, current_app
-from . import app
-from model import predict
+from flask import request, jsonify
+from app import create_app
+import joblib
+import numpy as np
+
+# Load the model
+def load_model():
+    with open('C:/Users/LENOVO/Documents/ML Time Series Forecasting/project/models/gradient_boosting_model.pkl', 'rb') as f:
+        model = joblib.load(f)
+    return model
+
+model = load_model()
+
+app = create_app()
 
 @app.route('/predict', methods=['POST'])
-def make_prediction():
-    try:
-        # Extract features from request data
-        data = request.json  # Expecting a JSON payload
-        features = data['features']
+def predict():
+    data = request.get_json()
 
-        # Make prediction using the model
-        prediction = predict(features)
+    # Extract features from the JSON payload
+    features = np.array(data['features']).reshape(1, -1)
 
-        # Return the prediction as JSON
-        return jsonify({'prediction': prediction.tolist()})
+    # Make a prediction
+    prediction = model.predict(features)
 
-    except Exception as e:
-        # Handle exceptions
-        current_app.logger.error(f"Error during prediction: {e}")
-        return jsonify({'error': str(e)}), 500
+    return jsonify({'prediction': prediction.tolist()})

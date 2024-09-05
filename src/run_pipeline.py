@@ -64,7 +64,7 @@ def run_pipeline():
     # Step 7: App creation
     try:
         logging.info("Creating App...")
-        subprocess.run(["python", "C:/Users/LENOVO/Documents/ML Time Series Forecasting/project/run.py"], check=True)
+        subprocess.run(["python", "C:/Users/LENOVO/Documents/ML Time Series Forecasting/project/app/run.py"], check=True)
         logging.info("App development successfully.")
     except subprocess.CalledProcessError as e:
         logging.error(f"App development failed: {e}")

@@ -2,9 +2,11 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('config.Config')
 
-    from . import routes
-    app.register_blueprint(routes.bp)
+    # Load configuration (if needed)
+    # app.config.from_object('config.DevelopmentConfig')
+
+    with app.app_context():
+        from . import routes  # Import routes
 
     return app
