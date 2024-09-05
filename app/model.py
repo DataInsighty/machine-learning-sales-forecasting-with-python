@@ -3,7 +3,7 @@ import numpy as np
 
 # Load your trained model
 def load_model():
-    with open('C:/Users/Users/Documents/ML Project/models/gradient_boosting_model.pkl', 'rb') as f:
+    with open('C:/Users/LENOVO/Documents/ML Time Series Forecasting/project/models/gradient_boosting_model.pkl', 'rb') as f:
         model = joblib.load(f)
     return model
 
