@@ -60,6 +60,15 @@ def run_pipeline():
     except subprocess.CalledProcessError as e:
         logging.error(f"Feature importance calculation failed: {e}")
         return
+    
+    # Step 7: App creation
+    try:
+        logging.info("Creating App...")
+        subprocess.run(["python", "C:/Users/LENOVO/Documents/ML Time Series Forecasting/project/run.py"], check=True)
+        logging.info("App development successfully.")
+    except subprocess.CalledProcessError as e:
+        logging.error(f"App development failed: {e}")
+        return
 
 if __name__ == "__main__":
     run_pipeline()

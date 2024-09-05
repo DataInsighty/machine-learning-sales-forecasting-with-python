@@ -1,6 +1,6 @@
 from flask import request, jsonify, current_app
 from . import app
-from models.model import predict
+from model import predict
 
 @app.route('/predict', methods=['POST'])
 def make_prediction():
